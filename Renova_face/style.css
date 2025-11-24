@@ -1,0 +1,1326 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  scroll-behavior: smooth;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* ==========================
+   GLOBAL RESET & VARIABLES
+==========================*/
+:root {
+    --accent1: #ff5c3b;
+    --accent2: #ff8b4c;
+    --deep: #91492b;
+    --text: #532d1c;
+    --bg: #fff8f2;
+  }
+
+  
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+  }
+  
+  /* ==========================
+     TOP BAR (MARQUEE)
+  ==========================*/
+  .top-bar {
+    background: #ff3b2e;
+    color: white;
+    font-weight: 800;
+    font-size: 18px;
+    padding: 4px 0;
+    overflow: hidden;
+  }
+  
+  .top-bar .marquee {
+    display: inline-block;
+    white-space: nowrap;
+    padding-left: 100%;
+    animation: marquee 15s linear infinite;
+  }
+  
+  .top-bar .marquee span {
+    padding: 0 40px;
+  }
+  
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  
+  /* ==========================
+     HEADER
+  ==========================*/
+  .header {
+    position: relative;
+    width: 100%;
+    height: 0; /* evita que a header empurre o resto (logo fica fora) */
+    pointer-events: none; /* para que só o nav receba cliques */
+  }
+
+  .logo{
+    position: absolute;
+    left: 28px;
+    top: 12px;
+    z-index: -1;
+  }
+  
+  .logo img {
+    height: 250px; /* ajuste o tamanho aqui se quiser maior/menor */
+    display: block;
+    object-fit: contain;
+    filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.06));
+    margin-top: -45px;
+  }
+  
+  .nav-wrap {
+    position: absolute;
+    top: 45px;           /* altura da barra em relação ao topo da página */
+    right: 28px;         /* distância da borda direita */
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;        /* altura visual da barra */
+    width: 770px;
+    padding: 0 0px;     /* espaço para os ícones dentro da barra */
+    background: linear-gradient(90deg, var(--accent1) 0%, var(--accent2) 100%);
+    border-radius: 25px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    pointer-events: auto;
+    white-space: nowrap;
+  }
+  
+  .nav-icons img {
+    height: 100px;
+    display: block;
+    object-fit: contain;
+  }
+
+  .nav-icons2 img {
+    height: 120px;
+    margin-top: -10px;
+    display: block;
+    object-fit: contain;
+  }
+  
+  .nav {
+    display: flex;
+    gap: 56px;           /* espaçamento entre links (ajustável) */
+    align-items: center;
+    z-index: 45;
+    padding: 0 0px;
+  }
+  
+  .nav a {
+    text-decoration: none;
+    color: #ffffff;      /* branco conforme solicitado */
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+    padding: 6px 2px;
+    display: inline-block;
+  }
+  
+  /* ==========================
+     HERO SECTION
+  ==========================*/
+  .hero {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    padding: 150px 5%;
+  }
+  
+  .left {
+    flex: 1;
+    position: relative;
+  }
+  
+  .right {
+    width: 540px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  h1 {
+    font-size: 48px;
+    line-height: 1.04;
+    font-weight: 900;
+    margin: 18px 0 8px;
+    color: var(--accent1);
+  }
+  
+  h1 .orange {
+    background: linear-gradient(90deg, #ff3131, #ff914d); /* As cores que você pediu */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    
+    /* Garante que o gradiente apareça corretamente */
+    display: inline-block;
+  }
+  
+  h2 {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--deep);
+    margin: 30px 0 18px;
+  }
+  
+  /* ==========================
+     BULLETS
+  ==========================*/
+  .bullets {
+    margin-top: 30px;
+    font-size: 18px;
+    color: var(--text);
+    line-height: 2;
+  }
+  
+  .bullets .item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .pill {
+    width: 18px;
+    height: 18px;
+    border-radius: 6px;
+    background: linear-gradient(180deg, #ff4b3b, #c12a20);
+    margin-top: 6px;
+    flex-shrink: 0;
+  }
+  
+  /* ==========================
+     IMAGENS LATERAIS (SANTA, MOTO, CAIXA)
+  ==========================*/
+  .santa {
+    position: absolute;
+    right: 90px;
+    top: 233px;
+    width: 120px; /* espaço para o papai noel */
+    z-index: 10;
+  }
+  
+  .scooter {
+    position: absolute;
+    right: -8px;
+    top: 220px;
+    width: 150px; /* espaço para a motinha */
+    z-index: 10;
+  }
+  
+  .info-box {
+    position: absolute;
+    right: -20px;
+    top: 220px;
+    background: linear-gradient(180deg, var(--accent1), var(--accent2));
+    color: white;
+    padding: 25px;
+    border-radius: 22px;
+    width: 220px;
+    text-align: center;
+    font-weight: 800;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    margin-top: 100px;
+  }
+  
+  .info-box small {
+    display: block;
+    font-weight: 700;
+  }
+  
+  /* ==========================
+     DIREITA - GUIRLANDA + BADGE
+  ==========================*/
+  .wreath {
+    position: relative;
+  }
+  
+  .wreath img {
+    width: 520px; /* espaço para guirlanda real */
+  }
+  
+  .badge {
+    position: absolute;
+    left: 70px;
+    bottom: 40px;
+    background: #fff;
+    padding: 6px 12px;
+    font-weight: 900;
+    font-size: 42px;
+    border-radius: 18px;
+    color: var(--accent1);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+  }
+  
+  .off {
+    font-size: 22px;
+    margin-left: 8px;
+    color: var(--accent2);
+  }
+  
+  /* ==========================
+     CTA BUTTON
+  ==========================*/
+  .cta {
+    display: inline-block;
+    margin-top: 34px;
+    background: linear-gradient(90deg, var(--accent1), var(--accent2));
+    color: white;
+    padding: 20px 44px;
+    border-radius: 40px;
+    font-weight: 700;
+    font-size: 20px;
+    text-decoration: none;
+  }
+  
+
+    /* ==========================
+     BLOCO 02
+  ==========================*/
+
+.video-testimonials {
+  padding: 60px 5%;
+  background-color: var(--bg); /* Usa a cor de fundo definida */
+  text-align: center;
+}
+
+.video-testimonials .content-wrap {
+  max-width: 1200px; /* Limita a largura do conteúdo para centralizar em telas grandes */
+  margin: 0 auto;
+}
+
+.video-testimonials .main-title {
+  font-size: 38px;
+  font-weight: 900;
+  line-height: 1.1;
+  color: #ff3b2e; /* Vermelho forte para o título principal */
+  margin-bottom: 12px;
+}
+
+.video-testimonials .main-title strong {
+  color: var(--accent1); /* Destaca a parte "TRANS RESVERATROL AMERICANO + VITAMINA K2" */
+}
+
+.video-testimonials .subtitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 40px;
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 colunas com larguras iguais */
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.video-container {
+  position: relative;
+  padding: 300px 0px;
+  background-color: #d1d1d1; /* Cor de fundo cinza, como na imagem */
+  border-radius: 8px; /* Bordas arredondadas */
+  overflow: hidden; /* Garante que o iframe ou placeholder fique dentro */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Estilo para o texto placeholder, caso o link não seja inserido */
+.video-container .placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #555;
+  font-weight: 600;
+  font-size: 16px;
+  background-color: #d1d1d1;
+  text-align: center;
+  /* Remover após inserir o link do iframe */
+}
+
+/* Estilo do botão "CONSULTAR PLANOS DE TRATAMENTO" */
+.cta-treatments {
+  display: inline-block;
+  background: linear-gradient(90deg, #ff5c3b, #ff8b4c); /* Gradient laranja/vermelho */
+  color: white;
+  padding: 18px 50px;
+  border-radius: 40px;
+  font-weight: 700;
+  font-size: 18px;
+  text-decoration: none;
+  box-shadow: 0 6px 18px rgba(255, 92, 59, 0.4);
+  transition: transform 0.2s;
+}
+
+.cta-treatments:hover {
+  transform: translateY(-2px);
+}
+
+
+  /* ==========================
+     BLOCO 03
+  ==========================*/
+/* ==========================
+   PRODUCT DETAILS SECTION (CORRIGIDO)
+==========================*/
+.product-details {
+  position: relative; 
+  padding: 80px 5% 60px; 
+  background-color: var(--bg);
+  text-align: center;
+  overflow: hidden; 
+}
+
+.product-details .content-wrap {
+  max-width: 1000px; 
+  margin: 0 auto;
+  position: relative; 
+  z-index: 2; 
+}
+
+/* Flocos de Neve (Imagens de fundo) */
+.product-details .snowflakes {
+  position: absolute;
+  width: 180px; 
+  height: auto;
+  z-index: 1; 
+}
+
+.main-title{
+  background: linear-gradient(90deg, #ff3131, #ff914d); /* As cores que você pediu */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    
+    /* Garante que o gradiente apareça corretamente */
+    display: inline-block;
+}
+
+.product-details .snowflakes.top-left {
+  top: 0;
+  left: 0;
+}
+
+.product-details .snowflakes.bottom-right {
+  bottom: 0;
+  right: 0;
+}
+
+
+.product-details .main-title {
+  font-size: 34px;
+  font-weight: 900;
+  line-height: 1.2;
+  color: var(--accent1); 
+  margin-bottom: 50px;
+  text-transform: uppercase;
+}
+
+.product-info-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  background-color: #fff; 
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  margin-bottom: 50px;
+}
+
+.product-image-area {
+  flex-shrink: 0; 
+  width: 380px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-showcase-img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.product-text-area {
+  text-align: left;
+  max-width: 480px; 
+  position: relative; /* Essencial para posicionar o laço */
+}
+
+.exclusive-formula-tag {
+  display: inline-block; 
+  background-color: #ff3b2e; 
+  color: white;
+  padding: 5px 15px; 
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom:- 1px;
+  text-transform: uppercase;
+}
+
+/* NOVO: Posicionamento do Laço (Lado Direito) */
+.christmas-ribbon-right {
+  position: absolute;
+  right: 263px; /* Alinha no canto direito do product-text-area */
+  top: -6px; /* Sobe um pouco */
+  width: 65px; /* Aumentei um pouco o tamanho */
+  height: auto;
+  z-index: 10;
+}
+
+.product-text-area h2 {
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 1.2; 
+  margin-bottom: 20px;
+  text-transform: uppercase;
+
+  background: linear-gradient(90deg, #ff3131, #ff914d); /* As cores que você pediu */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    
+    /* Garante que o gradiente apareça corretamente */
+    display: inline-block;
+}
+
+.product-text-area p {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+/* NOVO: Container para posicionar o Chapéu fora do botão */
+.cta-container {
+  position: relative;
+  display: inline-block; /* Ocupa apenas o espaço necessário */
+}
+
+/* Botão CTA "COMPRAR AGORA" */
+.cta-buy-now {
+  display: inline-block;
+  background: linear-gradient(90deg, #ff5c3b, #ff8b4c);
+  color: white;
+  padding: 18px 40px;
+  border-radius: 40px;
+  font-weight: 700;
+  font-size: 20px;
+  text-decoration: none;
+  box-shadow: 0 6px 18px rgba(255, 92, 59, 0.4);
+  transition: transform 0.2s ease-in-out;
+}
+
+.cta-buy-now:hover {
+  transform: translateY(-2px);
+}
+
+/* NOVO: Chapéu de Papai Noel posicionado por fora e por cima */
+.santa-hat-icon-outside {
+  position: absolute;
+  width: 180px; /* Tamanho do chapéu */
+  height: auto;
+  top: -73px; /* Puxa para cima para encaixar na borda do botão */
+  left: -90px; /* Puxa para a esquerda sobre o botão */
+  z-index: 20; /* Garante que ele fique por cima do botão */
+  transform: rotate(-10deg); /* Uma leve rotação para dar um toque mais natural */
+  filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.2));
+}
+
+    /* ==========================
+     BLOCO 04
+  ==========================*/
+  /* ==========================
+   HOW TO USE SECTION
+==========================*/
+.how-to-use {
+  position: relative;
+  padding: 60px 5% 80px;
+  background-color: var(--bg); /* Fundo bege claro do tema */
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Reutiliza estilos de flocos e wrap da seção anterior se necessário */
+.how-to-use .content-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.how-to-use .section-title {
+  font-size: 38px;
+  font-weight: 900;
+  background: linear-gradient(90deg, #ff3131, #ff914d); /* As cores que você pediu */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    
+    /* Garante que o gradiente apareça corretamente */
+    display: inline-block;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.how-to-use .section-subtitle {
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text);
+  max-width: 800px;
+  margin: 0 auto 50px auto;
+  font-weight: 600;
+}
+
+/* GRID DOS CARDS */
+.steps-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px; /* Espaço entre os cards */
+  margin-bottom: 60px;
+  flex-wrap: wrap; /* Garante que quebre linha em telas menores */
+}
+
+.step-card {
+  background: #fff;
+  border-radius: 15px;
+  padding: 30px 20px;
+  width: 320px; /* Largura fixa do card */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ÁREA VISUAL (MOLDURA + FOTO/VIDEO) */
+.visual-wrapper {
+  position: relative;
+  width: 180px;  /* Tamanho total do círculo visual */
+  height: 180px;
+  margin-bottom: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* A Moldura Dourada (Imagem PNG transparente no meio) */
+.gold-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10; /* Fica acima da foto/video */
+  object-fit: contain;
+  pointer-events: none; /* Permite clicar no play se precisar */
+}
+
+/* O Conteúdo (Foto ou Vídeo) */
+.inner-content {
+  width: 60%;  /* Um pouco menor que a moldura para caber dentro */
+  height: 60%;
+  border-radius: 50%; /* Torna a imagem/video redonda */
+  object-fit: cover;
+  z-index: 1;
+}
+
+.inner-conten {
+  width: 80%;  /* Um pouco menor que a moldura para caber dentro */
+  height: 80%;
+  border-radius: 50%; /* Torna a imagem/video redonda */
+  object-fit: cover;
+  z-index: 1;
+}
+
+/* O Badge Vermelho (Losango) com o número */
+.step-badge {
+  position: absolute;
+  left: 10px; /* Posiciona à esquerda da moldura */
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg); /* Gira 45 graus para virar losango */
+  width: 45px;
+  height: 45px;
+  background: #ff3b2e; /* Vermelho */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+  border-radius: 2px;
+}
+
+/* O número dentro do badge (desvirar o texto) */
+.step-badge span {
+  transform: rotate(-45deg); /* Desgira o número para ficar reto */
+  color: white;
+  font-weight: 900;
+  font-size: 20px;
+}
+
+/* PILL DO TEXTO "PASSO 01" */
+.step-pill {
+  background: #ffbea8; /* Um tom pêssego/laranja claro */
+  color: #d1442e; /* Texto laranja escuro */
+  font-weight: 800;
+  font-size: 14px;
+  padding: 6px 20px;
+  border-radius: 20px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-top: -18px;
+}
+
+.step-desc {
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--text);
+  font-weight: 600;
+}
+
+
+/* ==========================
+   GUARANTEE SECTION (GARANTIA)
+==========================*/
+.guarantee-section {
+  position: relative;
+  padding: 60px 5% 80px;
+  background-color: var(--bg); /* Mantém o fundo bege claro */
+  text-align: center;
+  overflow: hidden;
+}
+
+.guarantee-section .content-wrap {
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* Título Principal */
+.guarantee-title {
+  font-size: 45px;
+  font-weight: 900;
+  margin-bottom: 50px;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #ff3131, #ff914d); /* As cores que você pediu */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    
+    /* Garante que o gradiente apareça corretamente */
+    display: inline-block;
+}
+
+/* Container do meio (Flexbox) */
+.guarantee-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px; /* Espaço entre imagem e texto */
+  margin-bottom: -10px;
+  text-align: left; /* Texto alinhado à esquerda como na imagem */
+}
+
+/* Área Visual (Frasco + Selo) */
+.guarantee-visuals {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.guarantee-visuals img {
+  height: 250px; /* Ajuste a altura do frasco */
+  width: auto;
+  z-index: 2; /* Fica na frente */
+  margin-right: -40px; /* Faz o frasco encostar/sobrepor o selo */
+  filter: drop-shadow(5px 5px 15px rgba(0,0,0,0.15));
+}
+
+.seal-img{
+  height: 450px !important;
+}
+
+.guarantee-visuals .seal-img {
+  height: 220px; /* O selo é grande */
+  width: auto;
+  z-index: 1;
+}
+
+/* Área de Texto */
+.guarantee-text-box {
+  max-width: 500px;
+}
+
+.guarantee-text-box h3 {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text); /* Marrom escuro */
+  margin-bottom: 20px;
+}
+
+.guarantee-text-box .highlight-red {
+  color: #ff3b2e; /* Vermelho destaque */
+}
+
+.guarantee-text-box p {
+  font-size: 18px;
+  line-height: 1.5;
+  color: #555;
+  font-weight: 500;
+}
+
+/* Selos de Segurança (Rodapé da seção) */
+.security-seals {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.security-seals img {
+  height: 200px; /* Tamanho dos selinhos */
+  width: auto;
+  object-fit: contain;
+  filter: grayscale(0%); /* Garante que fiquem coloridos */
+  margin-top: -70px;
+}
+
+
+
+
+/* ==========================
+   CHRISTMAS PROMO SECTION
+==========================*/
+.christmas-promo {
+  position: relative;
+  background: linear-gradient(135deg, #ff4b3b 0%, #ff8b4c 100%); /* Gradiente Laranja/Vermelho */
+  padding: 60px 20px;
+  text-align: center;
+  color: white;
+  overflow: hidden;
+}
+
+/* Fundo de Confetes */
+.confetti-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  /* O CAMINHO DA IMAGEM */
+  background-image: url('./img/confete.png'); 
+  
+  /* Ajustes para ficar bonito */
+  background-size: cover; /* Faz a imagem cobrir toda a área */
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  pointer-events: none; /* Garante que o clique passe através dela para os botões */
+  z-index: 0; /* Fica atrás do conteúdo */
+  opacity: 0.6; /* Dica: Se os confetes forem muito fortes, diminua isso (0.1 a 1.0) */
+}
+
+.christmas-promo .content-wrap {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  z-index: 2;
+}
+
+/* HEADER & TIMER */
+.promo-header h2 {
+  font-size: 50px;
+  font-weight: 900;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  background: linear-gradient(90deg, #f3cfab, #fff5ea);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.timer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.timer-label {
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #f3cfab, #fff5ea);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.countdown-box {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.time-unit {
+  background: white;
+  color: #333;
+  border-radius: 10px;
+  width: 90px;
+  height: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.time-unit span {
+  font-size: 42px;
+  font-weight: 800;
+  line-height: 1;
+  color: #333;
+}
+
+.time-unit small {
+  font-size: 12px;
+  font-weight: 700;
+  color: #ff4b3b; /* Vermelho nas legendas */
+  text-transform: uppercase;
+  margin-top: 5px;
+}
+
+/* Gorrinho do Noel no timer */
+.timer-santa-hat {
+  position: absolute;
+  top: -58px;
+  right: -168px; /* Talvez precise ajustar para 'left' dependendo de como ficar visualmente após inverter */
+  width: 130px;
+  z-index: 10;
+  
+  /* COMANDO MÁGICO PARA INVERTER A IMAGEM */
+  transform: scaleX(-1); 
+}
+
+.timer-label-bottom {
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.timer-label-bottom .highlight {
+  color: #2fff4e; /* Verde limão neon para destaque no fundo vermelho */
+  font-weight: 800;
+}
+
+/* GRIDS E CARDS */
+.offers-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  align-items: flex-end; /* Alinha os cards na base se tiverem alturas diferentes */
+}
+
+.offer-card {
+  background: white;
+  border-radius: 15px;
+  padding: 20px 5px 2px 5px;
+  color: #333;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  transition: transform 0.3s;
+}
+
+.offer-card:hover {
+  transform: translateY(-5px);
+}
+
+.card-header {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #ff8b4c;
+  margin-bottom: 5px;
+}
+
+.card-title {
+  font-size: 20px;
+  font-weight: 900;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #60241d, #957059);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 5px;
+}
+
+.card-title .orange-text {
+  /* Reseta o background para não pegar o gradiente marrom */
+  background: none; 
+  
+  /* Força a cor a aparecer novamente, sobrepondo a transparência do pai */
+  -webkit-text-fill-color: #ff4b3b; 
+  
+  /* A cor normal para garantia */
+  background: linear-gradient(135deg, #ff4b3b 0%, #ff8b4c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+}
+
+/* Borda roxa no título do último card */
+.bordered-title {
+  border: 2px solid #8a2be2; /* Roxo */
+  padding: 2px 8px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.old-price {
+  font-size: 12px;
+  color: #999;
+  text-decoration: line-through;
+  margin-bottom: 10px;
+}
+
+/* Área da Imagem do Produto */
+.product-visual {
+  position: relative;
+  height: 250px; /* Altura fixa para alinhar */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.bottle-img {
+  max-height: 100%;
+  max-width: 90%;
+  object-fit: contain;
+  margin-top: -45px;
+}
+
+/* Badges (Desconto, Gratis, Mais Vendido) */
+.badge-discount {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50px;
+  transform: rotate(-15deg);
+  z-index: 5;
+}
+
+.badge-free {
+  position: absolute;
+  top: 40px;
+  right: 5px;
+  width: 55px;
+  z-index: 5;
+}
+
+.badge-best-seller {
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  background: #08fe1c; /* Dourado/Bege */
+  color: #000000;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 4px 8px;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  z-index: 10;
+}
+
+/* Preços */
+.price-info {
+  margin-bottom: 10px;
+  margin-top: -30px;
+}
+
+.installments {
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 0;
+}
+
+.big-price {
+  font-size: 24px;
+  font-weight: 800;
+  color: #32cd32; /* Verde forte */
+  line-height: 1;
+}
+
+.big-price .price-value {
+  font-size: 80px;
+}
+
+/* Botão Comprar */
+.btn-buy-promo {
+  background: #32cd32; /* Verde */
+  color: white;
+  font-weight: 800;
+  text-decoration: none;
+  padding: 12px 0;
+  width: 80%;
+  border-radius: 30px;
+  text-transform: uppercase;
+  font-size: 16px;
+  margin-bottom: 8px;
+  box-shadow: 0 4px 10px rgba(50, 205, 50, 0.4);
+  display: block;
+}
+
+.btn-buy-promo:hover {
+  background: #2cb82c;
+}
+
+.cash-price {
+  font-size: 11px;
+  color: #666;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+/* Imagens Extras */
+.shipping-img {
+  height: 220px;
+  margin-bottom: 10px;
+  margin-top: -100px;
+}
+
+.cards-img {
+  height: 220px;
+  margin-top: -190px;
+}
+
+
+
+
+/* ==========================
+   FAQ SECTION (DÚVIDAS)
+==========================*/
+.faq-section {
+  padding: 60px 5%;
+  background-color: var(--bg); /* Bege claro do site */
+  text-align: center;
+}
+
+.faq-container {
+  max-width: 800px;
+  margin: 30px auto;
+  text-align: left;
+}
+
+.faq-item {
+  margin-bottom: 15px;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.faq-question {
+  width: 100%;
+  background: #fff;
+  border: none;
+  padding: 20px;
+  text-align: left;
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--deep); /* Marrom/Vermelho escuro do tema */
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px;
+  transition: background 0.3s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.faq-question:hover {
+  background-color: #fff0eb; /* Um rosinha bem claro no hover */
+}
+
+.faq-question .icon {
+  font-size: 24px;
+  font-weight: 300;
+  transition: transform 0.3s ease;
+  color: var(--accent1);
+}
+
+/* Estado Ativo (Aberto) */
+.faq-question.active .icon {
+  transform: rotate(45deg); /* O + vira um x */
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-out;
+  background-color: white;
+  border-radius: 0 0 8px 8px;
+}
+
+.answer-content {
+  padding: 0 20px 20px 20px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #555;
+}
+
+/* ==========================
+ VIDEO FABRICAÇÃO
+==========================*/
+.factory-video-section {
+  padding: 20px 5% 60px;
+  background-color: var(--bg);
+  text-align: center;
+}
+
+.video-title {
+  font-size: 24px;
+  color: var(--accent2);
+  font-weight: 800;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+/* Mantenha o wrapper como estava (ele define o tamanho da caixa) */
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* Mantém a proporção 16:9 da caixa */
+  height: 0;
+  max-width: 900px;
+  margin: 0 auto;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  border-radius: 12px;
+  overflow: hidden;
+  background: #000; /* Fundo preto caso o vídeo demore a carregar */
+}
+
+/* NOVO: Estilo para o vídeo local preencher tudo */
+.local-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  /* O COMANDO MÁGICO: */
+  object-fit: cover; 
+  /* Isso faz o vídeo dar "zoom" para preencher a caixa sem distorcer e sem deixar bordas pretas */
+  
+  border-radius: 12px; /* Garante que os cantos do vídeo acompanhem a caixa */
+}
+
+/* ==========================
+ WHATSAPP SECTION
+==========================*/
+.whatsapp-section {
+  padding: 60px 5%;
+  background: linear-gradient(180deg, var(--bg) 0%, #fff 100%);
+  text-align: center;
+}
+
+.whatsapp-title {
+  font-size: 32px;
+  font-weight: 900;
+  color: #4a2c20;
+  margin-bottom: 15px;
+}
+
+.whatsapp-subtitle {
+  font-size: 18px;
+  color: #666;
+  max-width: 700px;
+  margin: 0 auto 40px auto;
+  line-height: 1.5;
+}
+
+.whatsapp-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: #25D366; /* Verde oficial do WhatsApp */
+  color: white;
+  padding: 18px 40px;
+  font-size: 20px;
+  font-weight: 800;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+  transition: transform 0.3s;
+  
+  /* Animação de pulsar */
+  animation: pulse-green 2s infinite;
+}
+
+.whatsapp-btn:hover {
+  transform: scale(1.05);
+  background-color: #20bd5a;
+}
+
+.wpp-icon {
+  fill: white;
+}
+
+@keyframes pulse-green {
+  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+  70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+/* ==========================
+ FOOTER
+==========================*/
+.site-footer {
+  background-color: #000;
+  color: #fff;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.site-footer p {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin: 0;
+  opacity: 0.8;
+}
